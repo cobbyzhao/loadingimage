@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="sc">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="maxHeight.js"></script>
+    <style>
+    .post img {
+        width: 100%;
+        opacity: 0;
+        transition: opacity .2s ease-in .25s;
+    }
+    
+    .loaded img {
+        opacity: 1;
+    }
+    
+    .imglist {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+    }
+    
+    .imglist>img {
+        width: 100%;
+        height: 600px;
+        transition: .6s filter;
+        filter: blur(5px);
+    }
+    
+    .sc {
+        transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+    }
+    </style>
+    <script>
+   
+    //封装插件
+    jQuery.extend({
+        imageload: function(img) {
+            $(document).ready(function() {
+                $("img").each(function() {
+                    if ($(this).offset().top < $(window).height()) {
+                        $(this).attr("src", $(this).attr("x-src"));
+                    } else {
+                        $(window).scroll(function() {
+                            $("img").each(function() {
+                                if ($(this).attr("src") == "") {
+                                    if (($(this).offset().top + $(this).width() / 8) <
+                                        $(window).height() + $(window).scrollTop()) {
+                                        $(this).attr("src", $(this).attr("x-src"));
+                                    }
+                                }
+                            })
+                        });
+                    }
+                })
+            });
+        }
+    })
+    </script>
+</head>
+
+<body>
+    <div class="post">
+        <div class="image-bg" style="background-color:#141646">
+            <img width="310" height="200" src="07.png" />
+        </div>
+    </div>
+    <div class="imglist">
+
+        <img src="" x-src="fcc40235c39bf194fe53fad7d1386303_r.jpg" alt="">
+    </div>
+    <div class="imglist"><img src="" x-src="gamersky_01origin_01_2015141721D10.jpg" alt=""></div>
+    <div class="imglist"><img src="" x-src="gamersky_32origin_63_20154111834DF3.jpg" alt=""></div>
+    <div class="imglist"><img src="" x-src="gamersky_003origin_005_201442517392D4.jpg" alt=""></div>
+    <div class="imglist"><img src="" x-src="gamersky_010origin_019_20162201916FA8.jpg" alt=""></div>
+    <div class="imglist"><img src="" x-src="HAM087SSHZ.jpg" alt=""></div>
+    <div class="imglist" style="position: sticky;top: 10px"><img src="" x-src="05.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="11.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="07.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="03.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="04.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="05.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="11.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="07.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="03.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="04.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="05.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="11.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="07.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="03.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="04.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="05.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="11.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="07.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="03.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="04.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="05.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="11.png" alt=""></div>
+    <div class="imglist"><img src="" x-src="07.png" alt=""></div>
+    <script>
+    //JQ写法
+    $(function() {
+        jQuery.imageload('.imglist img');
+    })
+    </script>
+</body>
+
+</html>
